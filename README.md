@@ -42,6 +42,9 @@ Suba um PostgreSQL local com:
 - username: `postgres`
 - password: `postgres`
 
+
+Se o Docker estiver ativo, ao iniciar com `./mvnw spring-boot:run` a aplicacao passa a tentar subir automaticamente os servicos do `docker-compose.yml` (como o PostgreSQL), reduzindo erros de conexao recusada em `localhost:5432`.
+
 Ou sobrescreva por variavel de ambiente:
 
 - `DB_URL`
@@ -163,3 +166,13 @@ Esta base foi preparada para receber os modulos do time:
 
 Ou seja, a parte de infraestrutura e seguranca ja fica pronta para a evolucao dos modulos de negocio.
 
+
+
+### Checklist rapido de validacao local
+
+1. Confirme se o Docker esta ativo (se for usar auto-start do compose).
+2. Verifique se a porta `5432` esta livre antes de subir a aplicacao.
+3. Suba a aplicacao com `./mvnw spring-boot:run`.
+4. Valide se o banco subiu com `docker compose ps postgres` (status `running`).
+5. Teste o health check em `GET http://localhost:8080/api/public/health`.
+6. Se ainda falhar conexao, sobrescreva `DB_URL`, `DB_USERNAME` e `DB_PASSWORD` no shell e rode novamente.
