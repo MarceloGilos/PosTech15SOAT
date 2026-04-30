@@ -4,8 +4,8 @@ services:
     container_name: numberone-db
     environment:
       POSTGRES_DB: numberone
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     volumes:
@@ -27,8 +27,8 @@ services:
 #      - postgres
 #    environment:
 #      DB_URL: jdbc:postgresql://postgres:5432/numberone
-#      DB_USERNAME: admin
-#      DB_PASSWORD: admin
+#      DB_USERNAME: postgres
+#      DB_PASSWORD: postgres
 #      JWT_SECRET: change-this-local-jwt-secret-with-32-chars
 #      BOOTSTRAP_ADMIN_USERNAME: admin
 #      BOOTSTRAP_ADMIN_PASSWORD: admin123456
