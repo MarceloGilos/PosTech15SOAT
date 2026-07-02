@@ -24,7 +24,7 @@ env:
 jobs:
   unit-tests:
     name: Testes unitários
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
