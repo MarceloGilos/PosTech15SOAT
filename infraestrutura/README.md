@@ -4,9 +4,9 @@ Esta pasta contém os manifests Kubernetes usados pela esteira de CI/CD para pub
 
 ## GitHub Actions
 
-O workflow `.github/workflows/ci-cd-kubernetes-local.yml` executa:
+O workflow `.github/workflows/ci-cd-kubernetes-local.yml` é iniciado por `push` em qualquer branch, por `pull_request` para `main` e por acionamento manual (`workflow_dispatch`). Ele executa:
 
-1. Testes unitários da aplicação Java com `./mvnw clean test` em runner Ubuntu hospedado pelo GitHub.
+1. Testes unitários da aplicação Java com `./mvnw clean test` em runner self-hosted.
 2. Build da imagem Docker no runner self-hosted `runner-windows-0002`.
 3. Validação do acesso ao cluster Kubernetes local com `kubectl cluster-info`.
 4. Aplicação dos manifests Kubernetes locais em `infraestrutura/kubernetes/application.yaml`.
