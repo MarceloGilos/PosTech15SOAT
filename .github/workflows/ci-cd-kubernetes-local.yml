@@ -2,9 +2,6 @@ name: CI/CD Kubernetes Local
 
 on:
   push:
-    branches:
-      - main
-      - feature/automacao
   pull_request:
     branches:
       - main
@@ -24,24 +21,25 @@ env:
 jobs:
   unit-tests:
     name: Testes unitários
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted]
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Configurar Java 25
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
         with:
           distribution: temurin
           java-version: '25'
           cache: maven
 
       - name: Executar testes unitários
-        run: ./mvnw clean test
+        shell: cmd
+        run: mvnw.cmd clean test
 
       - name: Publicar relatórios dos testes unitários
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: relatorios-testes-unitarios
           path: |
@@ -56,31 +54,26 @@ jobs:
     if: github.event_name != 'pull_request' && needs.unit-tests.result == 'success'
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Validar acesso ao cluster Kubernetes local
-        shell: pwsh
+        shell: cmd
         run: |
           kubectl version --client
           kubectl cluster-info
 
       - name: Build da imagem Docker local
-        shell: pwsh
+        shell: cmd
         run: |
-          $imageTag = "${env:IMAGE_NAME}:${env:GITHUB_SHA}"
-          docker build --tag $imageTag --tag "${env:IMAGE_NAME}:latest" .
+          docker build --tag "%IMAGE_NAME%:%GITHUB_SHA%" --tag "%IMAGE_NAME%:latest" .
 
       - name: Aplicar manifests no Kubernetes local
-        shell: pwsh
+        shell: cmd
         run: |
-          $imageTag = "${env:IMAGE_NAME}:${env:GITHUB_SHA}"
-          $manifest = Get-Content "infraestrutura/kubernetes/application.yaml" -Raw
-          $manifest = $manifest.Replace("__K8S_NAMESPACE__", $env:K8S_NAMESPACE)
-          $manifest = $manifest.Replace("__IMAGE_URI__", $imageTag)
-          $manifest | kubectl apply -f -
+          powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "$manifest = Get-Content 'infraestrutura/kubernetes/application.yaml' -Raw; $manifest = $manifest.Replace('__K8S_NAMESPACE__', $env:K8S_NAMESPACE); $manifest = $manifest.Replace('__IMAGE_URI__', ('{0}:{1}' -f $env:IMAGE_NAME, $env:GITHUB_SHA)); $manifest | kubectl apply -f -"
 
       - name: Aguardar rollout da aplicação
-        shell: pwsh
+        shell: cmd
         run: |
-          kubectl rollout status deployment/numberone --namespace $env:K8S_NAMESPACE --timeout=180s
-          kubectl get pods,services --namespace $env:K8S_NAMESPACE
+          kubectl rollout status deployment/numberone --namespace %K8S_NAMESPACE% --timeout=180s
+          kubectl get pods,services --namespace %K8S_NAMESPACE%
