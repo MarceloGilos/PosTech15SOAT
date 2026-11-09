@@ -1,5 +1,7 @@
 # Desenvolvimento do Anderson
 
+Este arquivo registra o escopo inicial do projeto. Para a fase 4, consultar a [proposta atual para a equipe](../fase-4/proposta-equipe.md#104-anderson---inventory-e-regras-de-materiais): Anderson fica com Inventory, peças/insumos, fornecedores, disponibilidade, reservas, consumo e movimentações em PostgreSQL.
+
 ## Escopo
 
 Anderson fica responsavel pelo modulo de cadastro base:
@@ -73,4 +75,3 @@ Anderson nao implementa:
 - ordem de servico
 - orcamento
 - seguranca JWT
-

@@ -42,3 +42,7 @@ build/
 *.tfplan
 .idea/
 .env
+# Checkouts de trabalho, ambientes e caches locais
+/tmp/
+__pycache__/
+*.pyc

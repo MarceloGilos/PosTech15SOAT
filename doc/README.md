@@ -30,6 +30,18 @@ Esta pasta centraliza a documentacao de apoio do projeto NumberOne para a entreg
 - Terraform para VPC, EKS, RDS e ECR.
 - Desenhos tecnicos em Mermaid, C4 e Draw.io.
 
+## Arquitetura distribuida — Fase 4
+
+- [Fase 4 - proposta para a equipe](fase-4/proposta-equipe.md): OS/Billing/Inventory, três PostgreSQL e histórico DynamoDB, seis repositórios, Saga/SQS, checklist e divisão da equipe.
+- [Fase 4 - implementação da OS em fases](fase-4/implementacao-os/README.md): plano revisado com o estado local, ajustes necessários e implementação pendente por fase.
+- [Fase 4 - contrato atualizado da Saga](fase-4/contratos-saga-arquitetura-v2.md): SQS Billing → OS, REST com Inventory/Billing, compensação e histórico DynamoDB.
+- [Fase 4 - orientações de implementação da equipe](fase-4/orientacoes-implementacao-equipe.md): decisões DEC-01 a DEC-20 fechadas em 07/11 por delegação de Matheus, análise do código existente e tarefas por responsável.
+- [Fase 4 - revisão da arquitetura do Julio](fase-4/revisao-arquitetura-julio-2026-11-02.md): comparação com a proposta anterior, mudanças de fluxo, requisitos obrigatórios e contratos a alinhar.
+- [Fase 4 - Saga conforme fluxo do Julio](fase-4/fluxo-saga-proposta-julio.md): material para apresentar à equipe, com jornada completa, REST/SQS, estados e compensações; [versão PDF](../output/pdf/fluxo-saga-proposta-julio.pdf).
+- [Fase 4 - proposta da equipe em PDF](../output/pdf/proposta-equipe-fase-4.pdf): versão para compartilhar, com diagramas, exemplos Java e checklist. Gerada a partir do Markdown por `scripts/gerar-proposta-fase4.py`.
+- [Fase 4 - anexo técnico](fase-4/proposta-implementacao.md): transações T01-T26, compensações, reserva/consumo SQL e projeção idempotente do histórico no DynamoDB.
+- [Fase 4 - exemplo de fluxo](fase-4/fluxo-exemplo-ordem-servico.md): comparação do atendimento atual com o fluxo distribuído, incluindo estoque, pagamento e compensação.
+
 ## Base Atual do Projeto
 
 - Java configurado no Maven: `25`

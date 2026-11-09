@@ -1,5 +1,7 @@
 # Desenvolvimento do Matheus
 
+Este arquivo registra o escopo inicial do projeto. Para a fase 4, consultar a [proposta atual para a equipe](../fase-4/proposta-equipe.md#102-matheus---os-diagnóstico-execução-e-saga): Matheus fica com OS, clientes/veículos, diagnóstico, execução, Saga e histórico de revisões no DynamoDB.
+
 ## Escopo
 
 Matheus fica responsavel pelo modulo principal de ordem de servico:
@@ -99,4 +101,3 @@ Matheus nao implementa:
 - docker
 - swagger
 - tratamento global de excecao
-

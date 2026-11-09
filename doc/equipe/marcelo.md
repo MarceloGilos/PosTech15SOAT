@@ -1,5 +1,7 @@
 # Desenvolvimento do Marcelo
 
+Este arquivo registra o escopo inicial do projeto. Para a fase 4, consultar a [proposta atual para a equipe](../fase-4/proposta-equipe.md#105-marcelo---infraestrutura-e-plataforma): Marcelo fica com os repositórios de infraestrutura de bancos, AWS e Lambdas de autenticação, além de CI/CD, Kubernetes, observabilidade e apoio às integrações.
+
 ## Escopo
 
 Marcelo fica responsavel pela base tecnica do projeto e pela integracao final entre os modulos.
@@ -77,4 +79,3 @@ O papel principal dele e:
 - seguranca
 - integracao
 - fechamento do projeto
-

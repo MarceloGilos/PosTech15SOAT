@@ -1,5 +1,7 @@
 # Desenvolvimento do Julio
 
+Este arquivo registra o escopo inicial do projeto. Para a fase 4, consultar a [proposta atual para a equipe](../fase-4/proposta-equipe.md#103-julio---orçamento-pagamento-e-mercado-pago): Julio fica com orçamento, pagamento e Mercado Pago.
+
 ## Escopo
 
 Julio fica responsavel pelo modulo de catalogo e estoque:
@@ -83,4 +85,3 @@ Julio nao implementa:
 - ordem de servico
 - orcamento
 - seguranca JWT
-
